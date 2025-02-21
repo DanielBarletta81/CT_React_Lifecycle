@@ -4,7 +4,7 @@ import './CharacterList.css';
 
 // -- Task 2: Fetch and Display Characters --
 
-const CharacterList = () => {
+const CharacterList = ({ onCharacterSelect }) => {
   const [characters, setCharacters] = useState([]);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const CharacterList = () => {
               ts: '1',
               apikey: process.env.REACT_APP_MARVEL_PUBLIC_KEY,
               hash: process.env.REACT_APP_MARVEL_HASH,
-              limit: 20
+              limit: 25
             }
           }
         );
@@ -33,7 +33,11 @@ const CharacterList = () => {
   return (
     <div className="character-grid">
       {characters.map(character => (
-        <div key={character.id} className="character-card">
+        <div 
+          key={character.id} 
+          className="character-card"
+          onClick={() => onCharacterSelect(character.id)}
+        >
           <img 
             src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
             alt={character.name}
@@ -44,5 +48,4 @@ const CharacterList = () => {
     </div>
   );
 };
-
 export default CharacterList;
