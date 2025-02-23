@@ -17,7 +17,7 @@ const CharacterList = ({ onCharacterSelect }) => {
               ts: '1',
               apikey: process.env.REACT_APP_MARVEL_PUBLIC_KEY,
               hash: process.env.REACT_APP_MARVEL_HASH,
-              limit: 25
+              limit: 20
             }
           }
         );
